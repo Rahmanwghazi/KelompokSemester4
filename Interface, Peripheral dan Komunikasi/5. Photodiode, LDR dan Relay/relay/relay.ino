@@ -1,10 +1,10 @@
-int relay = A5; // men set pin A5 sebagai relay
+int relay = A5; 
 void setup() { 
-pinMode(relay, OUTPUT); // menset relay sebagai output
+pinMode(relay, OUTPUT); 
 } 
 void loop() { 
- digitalWrite(relay, HIGH); //menyalakan relay keadaan HIGH
-delay(1000); // memberi delay selama 1 detik
-digitalWrite(relay, LOW); //menyalakan relay keadaan LOW
-delay(1000); // memberi delay selama 1 detik
+ digitalWrite(relay, HIGH); 
+delay(1000); 
+digitalWrite(relay, LOW); 
+delay(1000); 
 } 

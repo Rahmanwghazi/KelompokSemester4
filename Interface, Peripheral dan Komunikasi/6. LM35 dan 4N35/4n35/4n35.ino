@@ -1,10 +1,10 @@
-int led = A5; // set pin A5 untuk LED
+int led = A5; 
 void setup() {
-  pinMode(led, OUTPUT); //men set pin led sebagai outputt
+  pinMode(led, OUTPUT); 
 } 
 void loop() { 
- digitalWrite(led, HIGH); //menuliskan led untuk menyala (HIGH)
-delay(1000); // memberi delay selama 1 detik
-digitalWrite(led, LOW); // menuliskan led untuk mati (LOW)
-delay(1000); // memberi delay selama 1 detik
+ digitalWrite(led, HIGH); 
+delay(1000); 
+digitalWrite(led, LOW); 
+delay(1000); 
 } 
