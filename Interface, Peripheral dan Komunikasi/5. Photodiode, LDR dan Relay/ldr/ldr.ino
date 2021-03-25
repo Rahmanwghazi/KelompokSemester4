@@ -11,3 +11,5 @@ Serial.println(analogRead(lightPin));
 analogWrite(ledPin, analogRead(lightPin)/4); 
 delay(10); 
 } 
+
+//C:\\Users\\mrwgj\\AppData\\Local\\Temp\\arduino_build_91725/ldr.ino.hex

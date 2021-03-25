@@ -24,3 +24,5 @@ delay(20);
 delay(20); 
  } 
 }
+
+//C:\\Users\\mrwgj\\AppData\\Local\\Temp\\arduino_build_71861/photodiode.ino.hex
