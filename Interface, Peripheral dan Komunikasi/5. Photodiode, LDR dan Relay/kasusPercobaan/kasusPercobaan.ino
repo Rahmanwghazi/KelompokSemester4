@@ -1,16 +1,21 @@
 #include <LiquidCrystal_SR_LCD3.h>
-const int PIN_LCD_STROBE = 1; 
-const int PIN_LCD_DATA = 2; 
-const int PIN_LCD_CLOCK = 3; 
+const int PIN_LCD_STROBE = 2; 
+const int PIN_LCD_DATA = 3; 
+const int PIN_LCD_CLOCK = 4; 
 LiquidCrystal_SR_LCD3 lcd(PIN_LCD_DATA, PIN_LCD_CLOCK, PIN_LCD_STROBE); 
 
 int lightPin = A0;  
 
-int tombol1= 7;
-int tombol2= 6;
-int tombol3= 5;
-int tombol4= 4;
+int tombol1= 9;
+int tombol2= 8;
+int tombol3= 7;
+int tombol4= 6;
 
+  int tekan1=0;
+  int tekan2=0;
+  int tekan3=0;
+  int tekan4=0;
+  
 int pd = A1;
 int buz = 11;
 int led=10;
@@ -30,21 +35,19 @@ void setup()
 } 
 void loop() 
 { 
-  int tombol1 = digitalRead(7);
-  int tombol2 = digitalRead(6);
-  int tombol3 = digitalRead(5);
-  int tombol4 = digitalRead(4);
+  int tombol1 = digitalRead(9);
+  int tombol2 = digitalRead(8);
+  int tombol3 = digitalRead(7);
+  int tombol4 = digitalRead(6);
 
-  int tekan1=0;
-  int tekan2=0;
-  int tekan3=0;
-  int tekan4=0;
+
 
   int data=(analogRead(lightPin));
   
   if(tombol1==LOW){
     tekan1=tekan1+1;
   }
+  
   if(tekan1>0){
     Serial.println(data);
     analogWrite(led,(data/4));
@@ -71,21 +74,19 @@ void loop()
       digitalWrite(buz,LOW);
     }
     Serial.println(analogRead(lightPin)); 
-    lcd.println(analogRead(lightPin)); 
+     
   }
 
   if(tombol4==LOW){
-    tekan4=tekan4+1;
-  }
-  
-  if(tekan4>0){
+    
     if (data<=350){
-       lcd.println("batas nilai tercapai"); 
+      lcd.clear();
+       lcd.println("bts nilai tercapai"); 
     }
     else if (data >350){
-      lcd.println("batas nilai belum tercapai");
+      lcd.clear();
+      lcd.println("bts nilai blm tercapai");
     }
-    
   }
   
 delay(100);
