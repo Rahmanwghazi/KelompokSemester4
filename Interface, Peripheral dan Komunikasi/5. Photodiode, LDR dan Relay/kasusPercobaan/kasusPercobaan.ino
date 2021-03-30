@@ -69,9 +69,13 @@ void loop()
     
     if (data <= 350){
       digitalWrite(buz, HIGH);
+      lcd.clear();
+      lcd.println("bts nilai tercapai");
     }
     else if (data >350){
       digitalWrite(buz,LOW);
+      lcd.clear();
+      lcd.println("bts nilai blm tercapai");
     }
     Serial.println(analogRead(lightPin)); 
      
@@ -82,10 +86,12 @@ void loop()
     if (data<=350){
       lcd.clear();
        lcd.println("bts nilai tercapai"); 
+       digitalWrite(buz, HIGH);
     }
     else if (data >350){
       lcd.clear();
       lcd.println("bts nilai blm tercapai");
+      digitalWrite(buz,LOW);
     }
   }
   
