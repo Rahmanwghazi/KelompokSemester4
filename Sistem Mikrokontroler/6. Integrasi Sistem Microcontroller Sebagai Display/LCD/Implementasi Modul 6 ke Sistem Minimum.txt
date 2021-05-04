@@ -1,4 +1,7 @@
 Praktikum Mandiri 29 April
-1-5 LCD
 
+LCD
 https://youtu.be/VMREkc4piCo
+
+LCD + Shift Register
+https://youtu.be/dyEgtFexFO4
