@@ -10,6 +10,11 @@ int EnB= 3;
 int tekan2=0;
 int tekan=0;
 
+int kananAtas=13;
+int kananBawah=2;
+int kiriAtas=12;
+int kiriBawah=4;
+
 int rate = 0;
 int moveControl = 0;
 int kecepatanMotorKanan = 0;
@@ -25,12 +30,8 @@ int NilaiMaxSensor[8];
 int NilaiMinSensor[8];
 int NilaiTengahSensor[8];
 
-int kp[8];
-int kd[8];
-int peka[8];
-
-int Kp;
-int Kd;
+int Kp=20;
+int Kd=5;
 
 int led2 = 7;
 int led1 = 8;
@@ -42,6 +43,8 @@ int Error2=0;
 int LastError2=0;
 
 int tom=2;
+
+int peka[8]={500,500,500,500,500,500,500,500};
 
 void setup(){
   Serial.begin(9600);
@@ -64,9 +67,6 @@ void setup(){
   pinMode (tom,INPUT);
 
   for (int a=0;a<8;a++){
-    peka[a]=500;
-    kp[a]=20;
-    kd[a]=5;
     peka[a]=EEPROM.read(a)*4;
   }
 
@@ -74,25 +74,55 @@ void setup(){
   Kd=EEPROM.read(9);
 
   for(int b=0;b<8;b++){
-    Serial.print("Peka = ");
+    Serial.print("Peka ");
+    Serial.print(b);
+    Serial.print(" = ");
     Serial.println(peka[b]);
-    Serial.print("Kp = ");
-    Serial.println(Kp);
-    Serial.print("Kd = ");
-    Serial.println(Kd);
   }
+    Serial.print("Kp     = ");
+    Serial.println(Kp);
+    Serial.print("Kd     = ");
+    Serial.println(Kd);
   
 }
 
 void loop(){
-  
+  if(digitalRead(kiriBawah)==HIGH){
+    if(setting==0){
+      state=1;
+    }
+    else if(setting==1){
+      state=3;
+    }
+  }
 
-
-  if(digitalRead(tom)==HIGH){
-    tekan=tekan+1;
-    Serial.println("Kalibrasi...");
+  if(digitalRead(kiriAtas)==HIGH){
+    if(setting==0){
+      state=2;
+      setting=1;
+    }
+    else if(setting==1){
+      state=4;
+    }
   }
   
+  if(digitalRead(kananBawah)==HIGH){
+    if(setting==1){
+      state=5;
+    }
+  }
+
+  if(digitalRead(kananAtas)==HIGH){
+    if(setting==1){
+      state=6;
+    }
+  }
+
+
+  if(state==1){
+    tekan=tekan+1;
+    Serial.println("Kalibrasi...");
+  }  
       
       String sensor1 = String(digitalRead(A0));
       String sensor2 = String(digitalRead(A1));
@@ -104,6 +134,7 @@ void loop(){
       String sensor8 = String(digitalRead(4));
       
     if(tekan==1){
+      Serial.print(tekan);
       for(int i=0; i<8; i++){
         if(i==0){
         NilaiMaxSensor[i]=1023;
@@ -193,7 +224,56 @@ void loop(){
             enambelas();
           }
           delay(300);
-      } 
+      }
+
+         else if(state==2){
+    for (int a=0;a<8;a++){
+      EEPROM.write(a, peka[a]/4);
+    }
+  }
+  else if(state==3){
+    digitalWrite(led1,HIGH);
+    delay(1000);
+    digitalWrite(led1,LOW);
+    Kp=Kp-1;
+    EEPROM.write(8,Kp);
+    Serial.print("Kp     = ");
+    Serial.println(Kp);
+    Serial.print("Kd     = ");
+    Serial.println(Kd);
+  }
+  else if(state==4){
+    digitalWrite(led1,HIGH);
+    delay(1000);
+    Kp=Kp+1;
+    EEPROM.write(8,Kp);
+    Serial.print("Kp     = ");
+    Serial.println(Kp);
+    Serial.print("Kd     = ");
+    Serial.println(Kd);
+  }
+  else if(state==5){
+    digitalWrite(led2,HIGH);
+    delay(1000);
+    digitalWrite(led1,LOW);
+    Kd=Kd-1;
+    EEPROM.write(9,Kd);
+    Serial.print("Kp     = ");
+    Serial.println(Kp);
+    Serial.print("Kd     = ");
+    Serial.println(Kd);
+  }
+  else if(state==6){
+    digitalWrite(led2,HIGH);
+    delay(1000);
+    digitalWrite(led1,LOW);
+    Kd=Kd+1;
+    EEPROM.write(9,Kd);
+    Serial.print("Kp     = ");
+    Serial.println(Kp);
+    Serial.print("Kd     = ");
+    Serial.println(Kd);
+  }
 }
 void satu(){
   LastError = Error;
