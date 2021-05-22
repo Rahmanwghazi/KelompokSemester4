@@ -40,7 +40,7 @@ void loop() {
      lcd.setCursor(0,0);
      lcd.print("Wafiq");
      lcd.setCursor(0,1);
-     lcd.print("6702191016");
+     lcd.print("Istmy");
      delay(500);
     }
     else if (digitalRead(ProxSensor) <= 498) {
