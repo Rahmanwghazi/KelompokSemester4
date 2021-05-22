@@ -8,16 +8,19 @@ void setup() {
  }
 }
 void loop() {
+
  if(Serial.available())
  {
  char temp = (char)Serial.read();
  if(temp=='A')
  {
  digitalWrite(led[0],HIGH);
+ Serial.print("LED 1 ACTIVE!");
  }
  if(temp=='a')
  {
  digitalWrite(led[0],LOW);
+  Serial.print("LED 1 LOW!");
  }
  if(temp=='B')
  {
@@ -105,6 +108,7 @@ void loop() {
  
 }
  Serial.print(temp);
+ Serial.flush();
  
 }
 }
