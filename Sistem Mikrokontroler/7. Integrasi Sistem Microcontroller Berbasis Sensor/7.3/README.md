@@ -1,0 +1,2 @@
+- Masukkan file PIRSensorAnalogTEP.HEX ke dalam program file komponen PIR rangkaian 7.3.1 & 7.3.2
+- Masukkan file PIRSensorTEP.hex ke dalam program file komponen PIR rangkaian 7.3.3
