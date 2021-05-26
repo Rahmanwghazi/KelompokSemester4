@@ -162,6 +162,8 @@ void loop(){
             enambelas();
           }
           delay(300);
+          Serial.println(kecepatanMotorKanan);
+          Serial.println(kecepatanMotorKiri);
       } 
 }
 void satu(){
