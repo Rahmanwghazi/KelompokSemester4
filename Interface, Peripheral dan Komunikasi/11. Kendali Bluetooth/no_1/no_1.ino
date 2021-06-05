@@ -10,7 +10,7 @@ void loop()
     {
         delay(10);
         char c = Serial.read();
-        control += c;
+        control = control + c;
     }
     if (control.length() > 0)
     {

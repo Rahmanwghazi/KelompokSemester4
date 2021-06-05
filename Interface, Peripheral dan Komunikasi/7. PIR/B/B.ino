@@ -1,5 +1,5 @@
 //Inisialisasi waktu kalibrasi, pin, dll
-int calibrationTime = 30;
+int calibrationTime = 5;
 long unsigned int lowIn;
 long unsigned int pause = 5000;
 boolean lockLow = true;
@@ -15,7 +15,7 @@ void setup()
     digitalWrite(pirPin, LOW);           //PIN diset ke LOW
     Serial.print("calibrating sensor "); //Menampilkan teks ke Serial
     for (int i = 0; i < calibrationTime; i++)
-    { //Kalibrasi selama 30 detik
+    { //Kalibrasi selama 5 detik
         Serial.print(".");
         delay(1000);
     }

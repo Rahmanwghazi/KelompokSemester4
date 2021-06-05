@@ -4,7 +4,7 @@ int redPin=13,yellowPin=12,greenPin=11;
 int LDR1;
 int LDR2;
 BlynkTimer timer;
-char auth[] = "kJ6NUTxQoPUpdHX4iA9cK9S3bH__d9O9";
+char auth[] = "vmPaFK-rcC5AhI8St2bgAzStuQrYHyA2";
 
 void setup(){
   pinMode(redPin,OUTPUT); 
