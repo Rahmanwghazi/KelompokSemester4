@@ -143,8 +143,9 @@ void loop(){
       }
     }
   }
-
+lastTime=now;
   now = millis();
+  
   timeChange=now-lastTime;
 
   if(state==1){
@@ -232,6 +233,12 @@ void loop(){
     Serial.println(Kd);
     Serial.print("Ki     = ");
     Serial.println(Kd);
+    Serial.print("errSum     = ");
+    Serial.println(errSum);
+    Serial.print("Kanan     = ");
+    Serial.println(kecepatanMotorKanan);
+    Serial.print("Kiri     = ");
+    Serial.println(kecepatanMotorKiri);
     delay(1000);
 
       
@@ -363,7 +370,7 @@ void satu(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -401,7 +408,7 @@ void dua(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -439,7 +446,7 @@ void tiga(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -477,7 +484,7 @@ void empat(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -515,7 +522,7 @@ void lima(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -553,7 +560,7 @@ void enam(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -591,7 +598,7 @@ void tujuh(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -629,7 +636,7 @@ void delapan(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -667,7 +674,7 @@ void sembilan(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -705,7 +712,7 @@ void sepuluh(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -743,7 +750,7 @@ void sebelas(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -781,7 +788,7 @@ void duabelas(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -819,7 +826,7 @@ void tigabelas(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -857,7 +864,7 @@ void empatbelas(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
@@ -895,7 +902,7 @@ void limabelas(){
   }
    if (timeChange>SampleTime){
     
-    errSum = (Error2*timeChange)+errSum;
+    errSum = (Error2*timeChange/1000)+errSum;
     moveControl = (Kp*Error2)+(Ki*errSum)+(Kd*rate);
     kecepatanMotorKanan=kecepatanSetPoint-moveControl;
     kecepatanMotorKiri=kecepatanSetPoint+moveControl;
